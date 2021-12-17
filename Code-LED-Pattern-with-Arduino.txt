@@ -1,0 +1,72 @@
+float time=0, distance=0;
+void setup() {
+Serial.begin (9600);
+  pinMode(11,OUTPUT);
+  pinMode(10,OUTPUT);
+  pinMode(9,OUTPUT);
+  pinMode(7,OUTPUT);
+  pinMode(6,OUTPUT);
+  pinMode(5,OUTPUT);
+  pinMode(13,OUTPUT);
+  pinMode(12,INPUT);
+  digitalWrite(11,HIGH);
+  digitalWrite(10,HIGH);
+  digitalWrite(9,HIGH);
+  digitalWrite(7,HIGH);
+  digitalWrite(6,HIGH);
+  digitalWrite(5,HIGH);
+}
+
+void loop() {
+  digitalWrite(13,LOW);
+  delayMicroseconds(2);
+  digitalWrite(13,HIGH);
+  delayMicroseconds(10);
+  digitalWrite(13,LOW);
+  delayMicroseconds(2);
+  time=pulseIn(12,HIGH);
+  distance=time*340/20000;
+Serial.println(distance);
+  if(distance>=15.00)
+  {
+    digitalWrite(11,LOW);
+    delay(200);
+    digitalWrite(11,HIGH);
+    digitalWrite(10,LOW);
+    delay(200);
+    digitalWrite(10,HIGH);
+    digitalWrite(9,LOW);
+    delay(200);
+    digitalWrite(9,HIGH);
+    digitalWrite(7,LOW);
+    delay(200);
+    digitalWrite(7,HIGH);
+    digitalWrite(6,LOW);
+    delay(200);
+    digitalWrite(6,HIGH);
+    digitalWrite(5,LOW);
+    delay(200);
+    digitalWrite(5,HIGH);
+  }
+  else
+  {
+    digitalWrite(5,LOW);
+    delay(200);
+    digitalWrite(5,HIGH);
+    digitalWrite(6,LOW);
+    delay(200);
+    digitalWrite(6,HIGH);
+    digitalWrite(7,LOW);
+    delay(200);
+    digitalWrite(7,HIGH);
+    digitalWrite(9,LOW);
+    delay(200);
+    digitalWrite(9,HIGH);
+    digitalWrite(10,LOW);
+    delay(200);
+    digitalWrite(10,HIGH);
+    digitalWrite(11,LOW);
+    delay(200);
+    digitalWrite(11,HIGH);
+  }
+}
